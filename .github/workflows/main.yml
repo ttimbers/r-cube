@@ -3,23 +3,23 @@ on:
     branches: make-conflict
 
 jobs:
-  createPullRequest:
+  createConflict:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: get file
+      - name: get file and commit change
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git pull origin main
           curl -o cube.r https://raw.githubusercontent.com/ttimbers/r-cube-commit-source/main/cube.r
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v7
-        with:
-          author_name: Your pesky collaborator
-          author_email: pesky.collaborator@mail.com
-          message: "Here's a fix to the file!"
-          add: 'cube.r'
+          git commit -m "Here's a fix to the file!" -a
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          
