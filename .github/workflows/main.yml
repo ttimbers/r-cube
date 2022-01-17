@@ -1,6 +1,6 @@
-on:
-  schedule:
-    - cron: '5/54 * * * *'
+on: 
+  push:
+    branches: make-conflict
 
 jobs:
   createPullRequest:
