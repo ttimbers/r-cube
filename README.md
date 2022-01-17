@@ -6,7 +6,7 @@ Pratice GitHub repository for practicing resolving merge conflicts.
 
 ## Instructions
 
-1. Click the green "Use this template" repository to obtain a copy of it for yourself (do not fork it).
+1. Click the green "**Use this template**" button in this repository to obtain a copy of it for yourself (do not fork it).
 
 2. Clone this repository to your computer.
 
