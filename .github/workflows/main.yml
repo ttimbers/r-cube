@@ -1,0 +1,22 @@
+on:
+  schedule:
+    - cron: '5/54 * * * *'
+
+jobs:
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: get file
+        run: |
+          curl -o cube.r https://raw.githubusercontent.com/ttimbers/r-cube-commit-source/main/cube.r
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: Your pesky collaborator
+          author_email: pesky.collaborator@mail.com
+          message: "Here's a fix to the file!"
+          add: 'cube.r'
+          
