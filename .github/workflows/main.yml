@@ -1,9 +1,9 @@
-on: 
-  push:
-    branches: make-conflict
+on:
+  workflow_dispatch:
 
 jobs:
   createConflict:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
